@@ -92,7 +92,7 @@ export default {
     
     background: #0072ff;
     color: white;
-    border: 0px;
+    border: 1px solid #0072ff;
     padding: 5px;
     border-radius: 3px;
 }
@@ -105,7 +105,7 @@ export default {
     width: 100%;
     border: 1px solid white;
     border-radius: 3px;
-    transition: 1s all;
+    transition: 0.5s all;
 }
 .login-container input:hover{
     border: 1px black solid;

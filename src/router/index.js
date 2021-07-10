@@ -17,7 +17,7 @@ export default new Router({
       path: '/',
       name: 'Login',
       component: Login
-    },{path: '/:pathMatch(.*)*', name:'NotFound', component: NotFound} ,
+    },
     {
       path: '/register',
       name: 'Register',
@@ -33,6 +33,7 @@ export default new Router({
       name: 'Map',
       component: Map
     },
+    {path: '/:pathMatch(.*)*', name:'NotFound', component: NotFound},
      
   ]
 })

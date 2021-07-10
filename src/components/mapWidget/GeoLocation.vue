@@ -1,5 +1,4 @@
 <template>
-<div>
     <div class="container clickable" @click="flyTo_userLocattion">
     <svg
         class="geolocation-svg clickable"
@@ -14,7 +13,7 @@
         </g>
     </svg>
     </div>
-</div>
+
 </template>
 <script>
 import Global from '@/global'
@@ -76,9 +75,10 @@ export default {
    -ms-user-select: none; /* Internet Explorer/Edge */
 }
 .container{
-    /* background: #272a32ba;
-    padding: 5px;
-    border: 0.5px solid #ffffff52;   */
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    z-index: 401;
     background: #fdfdfd;
     padding: 5px;
     border: 2px solid rgb(0 0 0 / 29%);

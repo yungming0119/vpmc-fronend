@@ -1,13 +1,13 @@
 <template>
   <div :id="viewerContainer" class="leaflet-viewer">
-
+      <GeoLocation v-if="geolocation"/>
   </div>
 </template>
 
 <script>
 import Leaflet from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-
+import GeoLocation from "@/components/mapWidget/GeoLocation"
 import Global from '@/global'
 import UUID from "@/lib/LayerManage/UUID"
 import LayerManageCenter from "@/lib/LayerManage/LayerManageCenter"
@@ -45,11 +45,26 @@ export default {
         type: Number,
         default: 7
       },
+      geolocation:
+      {
+        type: Boolean,
+        default: true
+      },
+      zoomControl:
+      {
+        type:Object,
+        default:()=>
+        {
+          return {
+            show: true,
+            position: 'right-top'
+          }
+        }
+      }
     },
   mounted()
     {
       this.initMap()
-      this.test1()
       // this.test2()
     },
   methods:
@@ -64,71 +79,17 @@ export default {
         window.Global = Global
         window.viewer = viewer
 
-        viewer.zoomControl._container.parentElement.classList.remove('leaflet-left')
-        viewer.zoomControl._container.parentElement.classList.add('leaflet-right')
+        viewer.zoomControl.getContainer().hidden = !this.zoomControl.show
+        viewer.zoomControl.getContainer().parentElement.classList.remove('leaflet-left')
+        viewer.zoomControl.getContainer().parentElement.classList.add('leaflet-right')
 
         var data = Leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
         viewer.addLayer(data)
       },
-      test1()
-      {
-        // var viewer = Global.viewer
-        // var circle = Leaflet.circle([51.508, -0.11], {
-        //     color: 'red',
-        //     fillColor: '#f03',
-        //     fillOpacity: 0.5,
-        //     radius: 500
-        // })
-
-        // var marker_option = 
-        // {
-        //   icon: Leaflet.icon( { iconUrl: require('@/assets/logo.png'), iconSize: [50,50] } )
-        // }
-
-        // var marker = Leaflet.marker([25.03346062196884, 121.53289550083076], marker_option)
-        // viewer.addLayer(circle)
-        // viewer.addLayer(marker)
-      },
-      test2()
-      {
-        var viewer = Global.viewer
-        var markerFactory = new Factory(
-          {
-            name:' markerFactory',
-            processer: processer,
-          }
-        )
-        var markerProduct = new Product(
-          {
-            name: 'markerProduct',
-            type: 'marker',
-            payload:
-            {
-              viewer: viewer
-            }
-          }
-        )
-        markerProduct.generate( markerFactory )
-        console.log( markerFactory, markerProduct )
-        function processer( payload )
-        {
-          return new Promise( resolve =>
-          {
-            console.log(666,payload)
-            var viewer = payload.viewer
-            var marker_option = 
-            {
-              icon: Leaflet.icon( { iconUrl: require('@/assets/logo.png'), iconSize: [50,50] } )
-            }
-            var marker = Leaflet.marker([25.03346062196884, 121.53289550083076], marker_option)
-            viewer.addLayer(marker)
-            resolve( marker )
-          })
-
-        }
-
-
-      }
+    },
+  components:
+    {
+      GeoLocation
     }
 }
 </script>
