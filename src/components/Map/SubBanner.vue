@@ -1,5 +1,6 @@
 <template>
     <div class="sub-baner">
+        <button class="item">定位</button>
         <LayerButton class="item"/>
         <MeasureButton class="item"/>
         <select class="item"><option value="測試">測試</option></select>

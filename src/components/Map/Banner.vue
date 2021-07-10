@@ -1,8 +1,14 @@
 <template>
     <div class="banner row">
-        <div class="logo group">
-            <img :src="require('@/assets/logo.png')">
+        <div class="system-info row">
+            <div class="logo group">
+                <img :src="require('@/assets/logo.png')">
+            </div>
+            <div class="title">
+                <span>VPMC不動產資情網</span>
+            </div>
         </div>
+
         <div class="push-notification  group">
             <span>焦點要聞:  眾所矚目的旋轉豪宅「陶朱隱園」傳每坪 8百萬天價全棟完售</span>
         </div>
@@ -41,6 +47,7 @@ export default {
         color: white;
 }
 .group{
+    align-items: center;
     padding: 0px 10px;
     margin: 5px 0px;
     height: 80%;
@@ -53,6 +60,11 @@ export default {
 }
 .logo img{
     height: inherit;
+}
+.title{
+    display: flex;
+    margin: 0px 10px;
+    font-size: x-large;
 }
 .push-notification{
     display: flex;
