@@ -6,6 +6,12 @@
         <select class="item"><option value="測試">測試</option></select>
         <select class="item"><option value="測試">測試</option></select>
         <button class="item">測試</button>
+        <select class="item">
+            <option value="估價分析">估價分析</option>
+        </select>
+        <select class="item">
+            <option value="估價分析">內勤作業</option>
+        </select>
     </div>
 </template>
 <script>

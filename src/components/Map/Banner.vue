@@ -12,7 +12,7 @@
         <div class="push-notification  group">
             <span>焦點要聞:  眾所矚目的旋轉豪宅「陶朱隱園」傳每坪 8百萬天價全棟完售</span>
         </div>
-        <div class="user  group">
+        <div class="user group" @click="handleUserClick">
             <img :src="require('@/assets/img/unknown-user.jpg')">
             <span>{{userState.username}}</span>
             <router-link style="color:#44b2ff;" v-if="!userState.isLogin" to="/">登入</router-link>
@@ -35,6 +35,16 @@ export default {
             {
                 username: this.$store.state.user.username || '未知',
                 isLogin: this.$store.state.user.isLogin
+            }
+        },
+    methods:
+        {
+            handleUserClick()
+            {
+                if( this.userState.isLogin )
+                {
+                    this.$router.push("/userinfo")
+                }
             }
         }
 }
@@ -72,13 +82,36 @@ export default {
     background: #ffffff3b;
     border-radius: 0px 10px 5px 0px;
     width: 400px;
+    overflow: hidden;
 }
 .push-notification span{
     white-space: nowrap;
-    overflow: hidden;
+    
+    transform:translateX(100%);
+    animation: push-notification 20s linear infinite;
+}
+.marquee {
+height: 50px;
+overflow: hidden;
+}
+.marquee h3 {
+font-size: 1em;
+color: #000;
+transform:translateX(100%);
+animation: push-notification 20s linear infinite;
+}
+@keyframes push-notification {
+    0% { 
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }
 
+
 .user{
+    cursor: pointer;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -86,10 +119,15 @@ export default {
     -ms-flex-align: center;
     align-items: center;
     margin: 0px 10px;
+    background: none;
+    transition: 0.3s all;
     /* padding: 10px; */
 }
+.user:hover{
+    background: rgba(255, 255, 255, 0.199);
+}
 .user img{
-    height:20px
+    height:20px;
 }
 .user span{
     margin: 0px 5px;
