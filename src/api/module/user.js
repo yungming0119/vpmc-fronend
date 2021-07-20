@@ -16,7 +16,7 @@ export const login = ( payload ) =>
         headers: myHeaders,
         body: raw,
         redirect: 'follow',
-        credentials: 'include'
+        // credentials: 'include'
     };
 
     return new Promise( ( res, rej ) =>
