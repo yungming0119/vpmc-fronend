@@ -33,6 +33,7 @@ export default {
     beforeMount()
         {
             console.log(this)
+            console.log(this.$store)
         },
     components:
         {
