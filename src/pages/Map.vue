@@ -30,6 +30,10 @@ export default {
         {
             
         },
+    beforeMount()
+        {
+            console.log(this)
+        },
     components:
         {
             LeafletViewer,
