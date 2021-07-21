@@ -20,8 +20,10 @@
                     <p><input type="submit" value="登入"></p>
                 </div>
                 <div>
-                    <router-link to="/register">註冊</router-link>
-                    <router-link to="/lostpassword">忘記密碼</router-link>
+                    <span @click="handleRouteToRegister">註冊</span>
+                    <span @click="handleRouteToForgotPassword">忘記密碼</span>
+                    <!-- <router-link to="/register">註冊</router-link> -->
+                    <!-- <router-link to="/lostpassword">忘記密碼</router-link> -->
                 </div>
                 
             </div>
@@ -44,7 +46,7 @@ export default {
         },
     mounted()
         {
-            console.log(axios)
+            console.log(this)
         },
     methods:
         {
@@ -64,7 +66,15 @@ export default {
                     console.log(err)
                 }
                 
-            }
+            },
+            handleRouteToRegister()
+            {
+                window.location.href = `${process.env.BASE_API_URL}Identity/Account/Register`
+            },
+            handleRouteToForgotPassword()
+            {
+                window.location.href = `${process.env.BASE_API_URL}Identity/Account/ForgotPassword`
+            },
         }
 }
 </script>

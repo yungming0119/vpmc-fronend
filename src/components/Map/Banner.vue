@@ -43,7 +43,8 @@ export default {
             {
                 if( this.userState.isLogin )
                 {
-                    this.$router.push("/userinfo")
+                    // this.$router.push(`/userinfo/${this.userState.username}`)
+                    window.location.href = `${process.env.BASE_API_URL}Identity/Account/Manage`
                 }
             }
         }

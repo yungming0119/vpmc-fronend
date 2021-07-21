@@ -21,7 +21,7 @@ export const login = ( payload ) =>
 
     return new Promise( ( res, rej ) =>
     {
-        fetch(process.env.BASE_API_URL+'JwtAuth/authenticate', requestOptions)
+        fetch(process.env.BASE_API_URL+'api/JwtAuth/authenticate', requestOptions)
         .then( resp => resp.text())
         .then( resp => res(resp))
         .catch( err => rej(err))
@@ -52,7 +52,7 @@ export const login = ( payload ) =>
      };
      return new Promise( ( res, rej ) =>
     {
-        fetch(process.env.BASE_API_URL+'JwtAuth/register', requestOptions)
+        fetch(process.env.BASE_API_URL+'api/JwtAuth/register', requestOptions)
         .then( resp => resp.text())
         .then( resp => res(resp))
         .catch( err => rej(err))
